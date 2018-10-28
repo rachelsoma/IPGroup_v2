@@ -16,7 +16,7 @@
          <input type="text" name="username" maxlength="50" id="username">
        </div>
        <div class="input-box">
-         <label for="pword">Password:</label>
+         <label for="password">Password:</label>
          <input type="password" name="pword" maxlength="20" id="pword">
        </div>
        <div class="input-box">
@@ -25,6 +25,9 @@
     </form>
 
     <p>For testing purposes here are some user credentials:</p>
+    <p>root    <code>root</code></p>
+
+    
     <p>Staff User</p>
     <p>User name: <code>staff_user</code></p>
     <p>Password: <code>staffuser</code></p>
