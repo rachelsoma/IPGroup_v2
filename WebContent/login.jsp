@@ -12,7 +12,8 @@
 
 	<%!String userdbName;
 	String userdbPsw;
-	String dbUsertype;%>
+	//String dbUsertype;
+	%>
 
 	<%
 		Connection con = null;
@@ -26,29 +27,28 @@
 
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-		String usertype = request.getParameter("usertype");
+	//	String usertype = request.getParameter("usertype");
 
 		String sql = "select * from userdetail where name='"+name+"'and password='"+password+"' and usertype=?";
 		
-		if ( name!=null && password!=null
-				&& !usertype.equals("select")) {
+		if ( name!=null && password!=null) {
 			try {
 				Class.forName(driverName);
 				con = DriverManager.getConnection(url, user, dbpsw);
 				ps = con.prepareStatement(sql);
 				ps.setString(1, name);
 				ps.setString(2, password);
-				ps.setString(3, usertype);
+			//	ps.setString(3, usertype);
 				rs = ps.executeQuery();
 				if (rs.next()) {
 					userdbName = rs.getString("name");
 					userdbPsw = rs.getString("password");
-					dbUsertype = rs.getString("usertype");
+					//dbUsertype = rs.getString("usertype");
 
-					if (name.equals(userdbName) && password.equals(userdbPsw) && usertype.equals(dbUsertype)) {
+					if (name.equals(userdbName) && password.equals(userdbPsw)) {
 						session.setAttribute("name", userdbName);
-						session.setAttribute("usertype", dbUsertype);
-						response.sendRedirect("welcome.jsp");
+						//session.setAttribute("usertype", dbUsertype);
+						response.sendRedirect("home.jsp");
 					}
 				}
 

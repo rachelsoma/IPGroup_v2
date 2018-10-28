@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+    <form method="post" action="validate.jsp">
        <p style="color:red;"><?php echo $errorMessage;?></p>
        <div class="input-box">
          <label for="username">User name:</label>
