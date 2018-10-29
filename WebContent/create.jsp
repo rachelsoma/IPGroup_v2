@@ -9,18 +9,18 @@ pageEncoding="ISO-8859-1"%>
 <h1>Create a Database using JSP</h1>
 <% 
 Connection connection = null;
-try {
-Class.forName("com.mysql.jdbc.Driver").newInstance();
-connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "root");
+// try {
+// Class.forName("com.mysql.jdbc.Driver");
+connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "");
 Statement statement = connection.createStatement();
 String query = "CREATE DATABASE ip";
 statement.executeUpdate(query);
 out.println("Database test created sucessfully.");
-} 
-catch (Exception e) 
-{
-out.println("An error occurred.");
-}
+// } 
+// catch (Exception e) 
+// {
+// out.println("An error occurred.");
+// }
 %>
 </body>
 </html>
