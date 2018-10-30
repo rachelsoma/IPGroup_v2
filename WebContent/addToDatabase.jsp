@@ -4,17 +4,20 @@ pageEncoding="ISO-8859-1"%>
 
 <%
 String usernameIn=request.getParameter("username");
-String emailIN=request.getParameter("email");
+String emailIN =request.getParameter("email");
 String passwordIn=request.getParameter("password");
 
+String dbName = "ipgroup";
+String usedb = "USE "+dbName+";";
 
 try
 {
 Class.forName("com.mysql.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "");
-Statement st=conn.createStatement();
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "");
 
-int i=st.executeUpdate("insert into users(username,password,email)values('"+usernameIn+"','"+passwordIn+"','"+emailIn+")");
+Statement statement=conn.createStatement();
+statement.executeUpdate(usedb);
+int i=statement.executeUpdate("INSERT INTO user(username,password,email)VALUES('"+usernameIn+"','"+passwordIn+"','"+emailIN+"');");
 out.println("Data is successfully inserted!");
 }
 catch(Exception e)

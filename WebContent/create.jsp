@@ -42,6 +42,12 @@
 			}
  			
  			/* Populate categories */
+ 			i = 0;
+ 			while (i < categories.length){
+ 					statement.executeUpdate("INSERT INTO category (name) VALUES ('"+categories[i]+"');");
+ 					out.println("<p>category " + categories[i] + " added sucessfully.</p>");
+ 					i++;
+ 			}
  			
  			
 // 		} catch (Exception e) {
