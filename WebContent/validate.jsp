@@ -1,27 +1,18 @@
-<%-- 
-    Document   : validate
---%>
- 
-<%@ page import ="java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+<%@page import="java.sql.*,java.util.*"%>
+
 <%@include file="global.jsp" %>
-
-
 <%
-
-String driverName = "com.mysql.jdbc.Driver";
-String url = "jdbc:mysql://localhost:3306/record";
-String user = "root";
-String dbpsw = "root";
-
-
-//     try{
+statement.executeUpdate(usedb); 
+//     try{ 
         String username = request.getParameter("username");   
         String password = request.getParameter("password");
 
-        String loginQry="Select user,pass from login where username="+username+" AND pass="+password;
-        pst.setString(1, username);
-        pst.setString(2, password);
-        statement.executeQuery(loginQry);                        
+        String loginQry="Select username,password from user where username='"+username+"' AND password='"+password+"'";
+
+        rs = connection.createStatement().executeQuery(loginQry);
+                        
         if(rs.next())           
            out.println("Valid login credentials");        
         else
