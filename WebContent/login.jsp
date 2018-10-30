@@ -13,7 +13,6 @@
 
 	<%!String userdbName;
 	String userdbPsw;
-
 	%>
 
 	<%
