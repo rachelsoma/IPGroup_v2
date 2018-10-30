@@ -15,7 +15,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<form method="post" action="validate.jsp">
+			
+			<%
+		if (loggedIn==true) {
+	%>
+		<p>logged in</p>
+	<%
+		} 
+		else {
+	%>
+		<form method="post" action="validate.jsp">
 					<p style="color: red;">
 						<?php echo $errorMessage;?>
 					</p>
@@ -25,44 +34,23 @@
 					</div>
 					<div class="input-box">
 						<label for="password">Password:</label> <input type="password"
-							name="pword" maxlength="20" id="pword">
+							name="password" maxlength="20" id="password">
 					</div>
 					<div class="input-box">
 						<input type="submit" value="Login" name="submit">
 					</div>
 				</form>
+	<%
+		}
+	%>
+			
+
 			</div>
 			<div class="col">
 				<a href="register.html">register</a>
 			</div>
 		</div>
-		<div class="row">
-			<p>For testing purposes here are some user credentials:</p>
-			<p>
-				root
-				<code>root</code>
-			</p>
-
-
-			<p>Staff User</p>
-			<p>
-				User name:
-				<code>staff_user</code>
-			</p>
-			<p>
-				Password:
-				<code>staffuser</code>
-			</p>
-			<p>General User</p>
-			<p>
-				User name:
-				<code>general_user</code>
-			</p>
-			<p>
-				Password:
-				<code>generaluser</code>
-			</p>
-		</div>
+		<div class="row"></div>
 	</div>
 </body>
 </html>

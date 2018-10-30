@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.*,java.util.*"%>
 
-<%@include file="global.jsp" %>
+<%@include file="global.jsp"%>
 <%
 statement.executeUpdate(usedb); 
 //     try{ 
@@ -13,10 +13,16 @@ statement.executeUpdate(usedb);
 
         rs = connection.createStatement().executeQuery(loginQry);
                         
-        if(rs.next())           
-           out.println("Valid login credentials");        
-        else
-           out.println("Invalid login credentials");            
+        if(rs.next())  {         
+           	out.println("Valid login credentials");
+           	loggedIn = true;
+       		response.sendRedirect("home.jsp");
+        }
+        else {
+           	out.println("Invalid login credentials");
+	        out.println("username:"+username);   
+	        out.println("password:"+password);
+        }
 //    }
 //    catch(Exception e){       
 //        out.println("Something went wrong !! Please try again");       

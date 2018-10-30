@@ -13,6 +13,8 @@ String usedb = "USE "+dbName+";";
 ResultSet rs = null;
 PreparedStatement ps = null;
 
+boolean loggedIn = false;
+
 
 String driverName = "com.mysql.jdbc.Driver";
 

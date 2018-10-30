@@ -11,34 +11,32 @@
 </head>
 <body>
 
-	<%!String userdbName;
-	String userdbPsw;
+	<%!
+	String userdbName;
+	String userdbPass;
 	%>
 
 	<%
 
-		String name = request.getParameter("name");
-		String password = request.getParameter("password");
+		String usernameIn = request.getParameter("username");
+		String passwordIn = request.getParameter("password");
 
-
-		String sql = "select * from userdetail where name='"+name+"'and password='"+password+"' and usertype=?";
+		String sql = "select * from userdetail where name='"+usernameIn+"'and password='"+passwordIn+"'";
 		
-		if ( name!=null && password!=null) {
+		if ( usernameIn!=null && passwordIn!=null) {
 			try {
-				Class.forName(driverName);
-				con = DriverManager.getConnection(url, user, dbpsw);
-				ps = con.prepareStatement(sql);
-				ps.setString(1, name);
-				ps.setString(2, password);
-			//	ps.setString(3, usertype);
+	
+				ps = connection.prepareStatement(sql);
+				ps.setString(1, usernameIn);
+				ps.setString(2, passwordIn);
+		
 				rs = ps.executeQuery();
 				if (rs.next()) {
-					userdbName = rs.getString("name");
-					userdbPsw = rs.getString("password");
-					//dbUsertype = rs.getString("usertype");
-
-					if (name.equals(userdbName) && password.equals(userdbPsw)) {
-						session.setAttribute("name", userdbName);
+					userdbName = rs.getString("username");
+					userdbPass = rs.getString("password");
+	
+					if (usernameIn.equals(userdbName) && passwordIn.equals(userdbPass)) {
+						session.setAttribute("username", userdbName);
 
 						response.sendRedirect("home.jsp");
 					}
