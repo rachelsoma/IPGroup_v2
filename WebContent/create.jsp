@@ -24,6 +24,8 @@
 				/* category */ " catID int NOT NULL AUTO_INCREMENT, name varchar (20), PRIMARY KEY (catID)" 
 				};
 		
+		//TODO Add foreign keys
+		
 		String[] categories = {"sedan", "hatchback", "ute", "van", "4x4", "hybrid/electric"};
 	
 // 		try {

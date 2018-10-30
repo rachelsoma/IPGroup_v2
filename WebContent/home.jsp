@@ -14,8 +14,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col">
-			
+			<div class="col">		
 			<%
 		if (loggedIn==true) {
 	%>
@@ -26,7 +25,7 @@
 	%>
 		<form method="post" action="validate.jsp">
 					<p style="color: red;">
-						<?php echo $errorMessage;?>
+					
 					</p>
 					<div class="input-box">
 						<label for="username">User name:</label> <input type="text"
@@ -43,14 +42,13 @@
 	<%
 		}
 	%>
-			
-
 			</div>
 			<div class="col">
 				<a href="register.html">register</a>
 			</div>
 		</div>
-		<div class="row"></div>
+		<div class="row">
+		</div>
 	</div>
 </body>
 </html>
