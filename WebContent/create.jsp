@@ -9,17 +9,21 @@
 <body>
 	<h1>Create a Database using JSP</h1>
 	<%
+	String dbName = "ipgroup";
+	
+	String drop = "DROP DATABASE IF EXISTS " + dbName;
+	String createDb = "CREATE DATABASE " + dbName;
+	
 		Connection connection = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "");
 			Statement statement = connection.createStatement();
-			String drop = "DROP DATABASE IF EXISTS ip";
 			statement.executeUpdate(drop);
-			String createDb = "CREATE DATABASE IP_GROUP";
 			statement.executeUpdate(createDb);
-
 			out.println("Database test created sucessfully.");
+			
+			
 		} catch (Exception e) {
 			out.println("An error occurred.");
 		}
