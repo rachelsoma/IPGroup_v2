@@ -3,6 +3,7 @@
 --%>
  
 <%@ page import ="java.sql.*" %>
+<%@include file="global.jsp" %>
 
 
 <%
@@ -13,21 +14,20 @@ String user = "root";
 String dbpsw = "root";
 
 
-    try{
+//     try{
         String username = request.getParameter("username");   
         String password = request.getParameter("password");
-        Class.forName(driverName);  // MySQL database connection
-		Connection con = DriverManager.getConnection(url, user, dbpsw);    
-        PreparedStatement pst = con.prepareStatement("Select user,pass from login where user=? and pass=?");
+
+        String loginQry="Select user,pass from login where username="+username+" AND pass="+password;
         pst.setString(1, username);
         pst.setString(2, password);
-        ResultSet rs = pst.executeQuery();                        
+        statement.executeQuery(loginQry);                        
         if(rs.next())           
            out.println("Valid login credentials");        
         else
            out.println("Invalid login credentials");            
-   }
-   catch(Exception e){       
-       out.println("Something went wrong !! Please try again");       
-   }      
+//    }
+//    catch(Exception e){       
+//        out.println("Something went wrong !! Please try again");       
+//    }      
 %>

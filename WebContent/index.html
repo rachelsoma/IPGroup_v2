@@ -3,8 +3,24 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
 </head>
 <body>
-<a href="register.html">register</a>
+<a href="register.html">register</a> 
+
+    <form method="post" action="validate.jsp">
+       <p style="color:red;"><?php echo $errorMessage;?></p>
+       <div class="input-box">
+         <label for="username">User name:</label>
+         <input type="text" name="username" maxlength="50" id="username">
+       </div>
+       <div class="input-box">
+         <label for="password">Password:</label>
+         <input type="password" name="pword" maxlength="20" id="pword">
+       </div>
+       <div class="input-box">
+         <input type="submit" value="Login" name="submit">
+       </div>
+    </form>
 </body>
 </html>
