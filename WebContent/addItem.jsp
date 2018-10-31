@@ -34,27 +34,25 @@
 
 						<%
 							try {
-							
-								statement.executeUpdate(usedb); 
-							rs =statement.executeQuery("select * from category");
+
+								statement.executeUpdate(usedb);
+								rs = statement.executeQuery("select * from category");
 						%>
 
-				
-							<label>Drop down box to select category</label>
-				
-							<select id="category" name="category">
-								<%
-									while (rs.next()) {
-								%>
-								<option value="<%=rs.getString(1)%>"><%=rs.getString(2)%></option>
-								<%
-									}
-								%>
-							</select>
-				
+
+						<label>Drop down box to select category</label> 
+						<select	id="category" name="category">
+							<%
+								while (rs.next()) {
+							%>
+							<option value="<%=rs.getString(1)%>"><%=rs.getString(2)%></option>
+							<%
+								}
+							%>
+						</select>
+
 
 						<%
-							
 							} catch (Exception e) {
 								out.println("wrong entry" + e);
 							}
