@@ -23,11 +23,11 @@
 				<form method="post" action="addItemToDatabase.jsp">
 					<div class="input-box">
 						<label for="itemTitle">Item Name: </label> <input type="text"
-							name="itemTitle" maxlength="50" id="itemTitle">
+							name="itemTitle" maxlength="50" id="itemTitle" required>
 					</div>
 					<div class="input">
 						<label for="description">Description:</label> <input type="text"
-							name="description" maxlength="20" id="description">
+							name="description" maxlength="20" id="description" required>
 					</div>
 					<div class="input-box">
 
@@ -39,18 +39,19 @@
 							rs =statement.executeQuery("select * from category");
 						%>
 
-						<center>
+				
 							<label>Drop down box to select category<label>
-							<select>
+				
+							<select id="category" name="category">
 								<%
 									while (rs.next()) {
 								%>
-								<option><%=rs.getString(2)%></option>
+								<option value="<%=rs.getString(1)%>"><%=rs.getString(2)%></option>
 								<%
 									}
 								%>
 							</select>
-						</center>
+				
 
 						<%
 							
