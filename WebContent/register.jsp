@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@include file="global.jsp"%>
@@ -32,14 +33,11 @@
 				</div>
 			</div>
 			<div class="col-md-4 mr-auto">
+				<content>
 				<div class="col-md-12 card">
-					<%
-						if (loggedIn == true) {
-					%>
+					<% if (loggedIn == true) { %>
 					<p>logged in</p>
-					<%
-						} else {
-					%>
+					<% } else { %>
 					<form method="post" action="validate.jsp">
 						<p style="color: red;"></p>
 						<div class="input-box">
@@ -54,37 +52,29 @@
 								class="form-control btn.primary">
 						</div>
 					</form>
-					<%
-						}
-					%>
+					<% } %>
 				</div>
-
+				</content>
 			</div>
 
 		</div>
 		</header>
-		<div class="row content">
-			<!-- 	for each item -->
+		<div class="contentcard">
 
-
-			<%
-				statement.executeUpdate(usedb);
-				rs = statement.executeQuery("select * from item");
-				while (rs.next()) {
-			%>
-			<div class="col-md-4">
-				<div class="card">
-					<h3><%=rs.getString(2)%></h3>
-					<p><%=rs.getString(3)%></p>
+			<form action="addToDatabase.jsp" method="post">
+				<div class=col-md-8">
+					<label>user name </label><input type="text" name="username">
 				</div>
-			</div>
-			<%
-				}
-			%>
-
-			<!-- 	end for each -->
-
+				<div class=col-md-8">
+					<label>Password</label> <input type="password" name="password">
+				</div>
+				<div class=col-md-8">
+					<label>email</label> <input type="email" name="email">
+				</div>
+				<div class=col-md-8">
+					<input type="submit" name="submit">
+				</div>
+			</form>
 		</div>
-	</div>
 </body>
 </html>

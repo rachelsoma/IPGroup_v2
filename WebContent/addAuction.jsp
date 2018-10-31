@@ -63,28 +63,51 @@
 
 		</div>
 		</header>
-		<div class="row content">
-			<!-- 	for each item -->
+		<div class="row">
+			<div class="contentcard">
+				<form method="post" action="addAuctionToDatabase.jsp">
+					<div class="input-box">
+						<%
+							int userId = 1;
+							try {
+								statement.executeUpdate(usedb);
+								String getItemsQry = String.format("select * from item");
+								rs = statement.executeQuery(getItemsQry);
+						%>
 
 
-			<%
-				statement.executeUpdate(usedb);
-				rs = statement.executeQuery("select * from item");
-				while (rs.next()) {
-			%>
-			<div class="col-md-4">
-				<div class="card">
-					<h3><%=rs.getString(2)%></h3>
-					<p><%=rs.getString(3)%></p>
-				</div>
+						<label>Create a new auction</label> <select id="item" name="item">
+							<%
+								while (rs.next()) {
+							%>
+							<option value="<%=rs.getString(1)%>"><%=rs.getString(2)%></option>
+							<%
+								}
+							%>
+						</select>
+
+
+						<%
+							} catch (Exception e) {
+								out.println("wrong entry" + e);
+							}
+						%>
+
+
+
+					</div>
+					<div class="input">
+						<label for="reserve">Reserve price:</label> <input type="decimal"
+							name="reserve" maxlength="6" id="reserve" required>
+					</div>
+
+
+					End Date: <input type="date" name="endDate" id="endDate"> <input
+						type="submit" value="Start auction" name="submit">
+				</form>
 			</div>
-			<%
-				}
-			%>
-
-			<!-- 	end for each -->
 
 		</div>
 	</div>
+	</div>
 </body>
-</html>
