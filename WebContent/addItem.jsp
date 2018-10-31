@@ -40,7 +40,7 @@
 						%>
 
 				
-							<label>Drop down box to select category<label>
+							<label>Drop down box to select category</label>
 				
 							<select id="category" name="category">
 								<%
