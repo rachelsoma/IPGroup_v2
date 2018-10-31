@@ -4,8 +4,8 @@
 
 <%@include file="global.jsp"%>
 <%
-statement.executeUpdate(usedb); 
-//     try{ 
+	statement.executeUpdate(usedb); 
+     try{ 
         String username = request.getParameter("username");   
         String password = request.getParameter("password");
 
@@ -17,14 +17,13 @@ statement.executeUpdate(usedb);
            	out.println("Valid login credentials");
            	loggedIn = true;
        		response.sendRedirect("home.jsp");
-        }
-        else {
-           	out.println("Invalid login credentials");
-	        out.println("username:"+username);   
-	        out.println("password:"+password);
-        }
-//    }
-//    catch(Exception e){       
-//        out.println("Something went wrong !! Please try again");       
-//    }      
+       			} else {
+			out.println("Invalid login credentials");
+			out.println("username:" + username);
+			out.println("password:" + password);
+		}
+	} catch (Exception e) {
+		out.println("Something went wrong !! Please try again");
+	}
+	
 %>

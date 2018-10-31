@@ -18,7 +18,7 @@
 		String[] newTable = { "user", "item", "bids", "auction", "category" }; 
 		String[] newCols = { 
 				/* user */ "userID int NOT NULL AUTO_INCREMENT, username varchar(50), password varchar(50), email varchar(90), PRIMARY KEY (userID)", 
-				/* item */ "itemID int NOT NULL AUTO_INCREMENT, description varchar(255), vendor varchar(255), category varchar(20), PRIMARY KEY (itemID)",
+				/* item */ "itemID int NOT NULL AUTO_INCREMENT,itemTitle varchar(100), description varchar(255), vendor int, category varchar(20), PRIMARY KEY (itemID)",
 				/* bids */ " bidID int NOT NULL AUTO_INCREMENT ,amount decimal(18,2),userID numeric(10), bidTime DATETIME, PRIMARY KEY (bidID)",
 				/* auction */ " auctionID int NOT NULL AUTO_INCREMENT, reserve decimal(18,2), currentHighBid decimal(18,2), startTime DATETIME, endTime DATETIME,PRIMARY KEY (auctionID)",
 				/* category */ " catID int NOT NULL AUTO_INCREMENT, name varchar (20), PRIMARY KEY (catID)" 
