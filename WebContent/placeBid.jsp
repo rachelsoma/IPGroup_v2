@@ -17,19 +17,37 @@
 	<div class="container">
 		<!-- 	includes header -->
 		<jsp:include page="pageParts/header.jsp" />
-		
-<!-- get auction number from place bid button on home page  and display the auction details-->
-<% String itemID = request.getParameter("item");%>
-<!-- get user id from session -->
 
-<!-- if current user == vendor say "You cannot bid on your own item" -->
+		<!-- get auction number from place bid button on home page  and display the auction details-->
+		<%
+			String auctionID = request.getParameter("item");
 
-<!-- else enter bid amount -->
+			statement.executeUpdate(usedb);
+			out.println(auctionID);
+			rs = statement.executeQuery("select * from item WHERE itemID = '" + bidItemID + "'");
+			while (rs.next()) {
+				
+				
+			}
+		%>
+	<%-- 	<h3><%=rs.getString(2)%></h3>
+		<!-- name -->
+		<p><%=rs.getString(3)%></p>
+		<!-- reserve -->
+		<p><%=rs.getString(6)%></p>
+		<!-- time remaining --> --%>
+		
+		
+		<!-- get user id from session -->
 
-<!-- send to db.  if bid is > current highest say "You must bid an amount higher than <current highest>" -->
-		
-		
-		
+		<!-- if current user == vendor say "You cannot bid on your own item" -->
+
+		<!-- else enter bid amount -->
+
+		<!-- send to db.  if bid is > current highest say "You must bid an amount higher than <current highest>" -->
+
+
+
 	</div>
 </body>
 </html>
