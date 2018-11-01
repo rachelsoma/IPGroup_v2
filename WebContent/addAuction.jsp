@@ -56,8 +56,13 @@
 					</div>
 
 
-					End Date: <input type="date" name="endDate" id="endDate"> <input
-						type="submit" value="Start auction" name="submit">
+					Auction ends in: <input type="text" name="endDateHr" id="endDateHr"> Hrs. <input type="text" name="endDateMin" id="endDateMin"> min
+					
+					
+					
+					
+					<input 
+					type="submit" value="Start auction" name="submit">
 				</form>
 			</div>
 

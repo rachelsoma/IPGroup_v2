@@ -19,6 +19,6 @@
 		System.out.print(e);
 		e.printStackTrace();
 	}
-	
+
 	response.sendRedirect("validate.jsp");
 %>

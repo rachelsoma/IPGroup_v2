@@ -2,6 +2,7 @@
 
 <%@include file="global.jsp"%>
 <%
+
 	statement.executeUpdate(usedb);
 	int itemDb = 0;
 
@@ -12,18 +13,20 @@
 		itemDb = rs.getInt(1);
 	}
 	String reserveIn = request.getParameter("reserve");
-	String endDateIn = request.getParameter("endDate");
+	String endDateHrIn = request.getParameter("endDateHr");
+	String endDateMinIn = request.getParameter("endDateMin");
 	int userIn = 0; //TODO this should be id of current user
 	
-	SimpleDateFormat d=new SimpleDateFormat("yyyy-MM-dd");
-    Date dateDb=d.parse(endDateIn);          
-String dateString=dateDb.toString();
-    java.sql.Date sqlDate = new java.sql.Date(dateDb.getTime());    
+	int HrInt = Integer.parseInt(endDateHrIn); 
+	int minInt = Integer.parseInt(endDateMinIn);
+	int countdown = HrInt * 60 + minInt;
+
+
 
 // 	try {
 
 		String input;
-		input = String.format("INSERT INTO auction(itemID,reserve,endTime,currentHighBid) VALUES ('%s','%s','"+dateString+"','0')", itemIn,reserveIn);
+		input = String.format("INSERT INTO auction(itemID,reserve,endTime,currentHighBid) VALUES ('%s','%s','"+countdown+"','0')", itemIn,reserveIn);
 		int insert = statement.executeUpdate(input);
 		response.sendRedirect("home.jsp");
 // 	} catch (Exception e) {

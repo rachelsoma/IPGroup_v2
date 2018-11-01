@@ -13,9 +13,10 @@
 	}
 	String nameIn = request.getParameter("itemTitle");
 	String descIn = request.getParameter("description");
-	String userIn = (String) session.getAttribute("userID"); 
+	String userIn = (String) session.getAttribute(userID); 
 	int userInt = Integer.valueOf(userIn);
-
+	
+	
 	try {
 
 		String input;

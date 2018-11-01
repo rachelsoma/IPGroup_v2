@@ -22,19 +22,22 @@
 		<div class="row content">
 			<!-- 	for each item -->
 
-
 			<%
 				statement.executeUpdate(usedb);
 				rs = statement.executeQuery("select * from auction");
 				while (rs.next()) {
+					
+					
+					
 			%>
 			<div class="col-md-4">
 				<div class="card">
 					<%
-						ResultSet displayItems = statement.executeQuery("select " + rs.getString(2) + " from item");
+// 						ResultSet displayItems = statement.executeQuery("select " + rs.getString(2) + " from item");
 					%>
-					<h3><%=displayItems.getString(2)%></h3>
-					<p><%=displayItems.getString(3)%></p>
+					<h3><%=rs.getString(2)%></h3> <!-- name -->
+					<p><%=rs.getString(3)%></p><!-- resverve -->
+					<p><%=rs.getString(6)%></p><!-- time remaining -->
 				</div>
 			</div>
 			<%
