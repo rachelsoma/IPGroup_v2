@@ -15,67 +15,26 @@
 </head>
 <body>
 	<div class="container">
-		<header>
-		<div class="row">
-			<div class="col-md-8">
-				<h1>Auction Site</h1>
-				<div class="row">
-					<div class="col-md-4">
-						<a href="register.jsp">Register</a>
-					</div>
-					<div class="col-md-4">
-						<a href="addItem.jsp">Add item</a>
-					</div>
-					<div class="col-md-4">
-						<a href="addAuction.jsp">Add Auction</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 mr-auto">
-				<div class="col-md-12 card">
-					<%
-						if (loggedIn == true) {
-					%>
-					<p>logged in</p>
-					<%
-						} else {
-					%>
-					<form method="post" action="validate.jsp">
-						<p style="color: red;"></p>
-						<div class="input-box">
-							<label for="username">User name:</label> <input type="text"
-								name="username" maxlength="50" id="username"
-								class="form-control"> <label for="password">Password:</label>
-							<input type="password" name="password" maxlength="20"
-								id="password" class="form-control">
-						</div>
-						<div class="input-box">
-							<input type="submit" value="Login" name="submit"
-								class="form-control btn.primary">
-						</div>
-					</form>
-					<%
-						}
-					%>
-				</div>
-
-			</div>
-
-		</div>
-		</header>
+		
+		<!-- 	includes header -->
+		<jsp:include page="pageParts/header.jsp" />
+		
 		<div class="row content">
 			<!-- 	for each item -->
 
 
 			<%
 				statement.executeUpdate(usedb);
-				rs = statement.executeQuery("select * from item");
+				rs = statement.executeQuery("select * from auction");
 				while (rs.next()) {
 			%>
 			<div class="col-md-4">
 				<div class="card">
-					<h3><%=rs.getString(2)%></h3>
-					<p><%=rs.getString(3)%></p>
+					<%
+						ResultSet displayItems = statement.executeQuery("select " + rs.getString(2) + " from item");
+					%>
+					<h3><%=displayItems.getString(2)%></h3>
+					<p><%=displayItems.getString(3)%></p>
 				</div>
 			</div>
 			<%
