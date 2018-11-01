@@ -13,14 +13,15 @@
 	}
 	String nameIn = request.getParameter("itemTitle");
 	String descIn = request.getParameter("description");
-	int userIn = 1; //TODO this should be id of current user
+	String userIn = (String) session.getAttribute("userID"); 
+	int userInt = Integer.valueOf(userIn);
 
 	try {
 
 		String input;
 		input = String.format(
 				"INSERT INTO item(itemTitle,description,category,vendor) VALUES ('%s','%s',%d,%d)", nameIn,
-				descIn, catDb, userIn);
+				descIn, catDb, userInt);
 		int insert = statement.executeUpdate(input);
 		response.sendRedirect("home.jsp");
 	} catch (Exception e) {

@@ -23,9 +23,10 @@
 			<div class="col-md-4 mr-auto">
 				<div class="col-md-12 card">
 					<%
-						if (loggedIn == true) {
+						if (session.getAttribute(loggedIn)=="true") {
 					%>
 					<p>logged in</p>
+						<%out.println("UID: " + session.getAttribute(userID));%>
 					<%
 						} else {
 					%>
