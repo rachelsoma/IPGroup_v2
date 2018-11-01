@@ -40,7 +40,7 @@
 						<p><%=rs.getString(6) %></p>
 						<!-- time remaining -->
 						
-						<input type="submit" value="Bid now" name="<%=rs.getString(2)%>">
+						<input type="submit" value="Bid now" name="<%=rs.getString(1)%>">
 					</form>
 				</div>
 			</div>
