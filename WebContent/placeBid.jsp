@@ -19,6 +19,7 @@
 		<jsp:include page="pageParts/header.jsp" />
 		
 <!-- get auction number from place bid button on home page  and display the auction details-->
+<% String itemID = request.getParameter("item");%>
 <!-- get user id from session -->
 
 <!-- if current user == vendor say "You cannot bid on your own item" -->

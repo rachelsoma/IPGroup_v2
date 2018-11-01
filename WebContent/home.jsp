@@ -15,10 +15,10 @@
 </head>
 <body>
 	<div class="container">
-		
+
 		<!-- 	includes header -->
 		<jsp:include page="pageParts/header.jsp" />
-		
+
 		<div class="row content">
 			<!-- 	for each item -->
 
@@ -26,18 +26,22 @@
 				statement.executeUpdate(usedb);
 				rs = statement.executeQuery("select * from auction");
 				while (rs.next()) {
-					
-					
-					
 			%>
 			<div class="col-md-4">
 				<div class="card">
 					<%
-// 						ResultSet displayItems = statement.executeQuery("select " + rs.getString(2) + " from item");
+						// 						ResultSet displayItems = statement.executeQuery("select " + rs.getString(2) + " from item");
 					%>
-					<h3><%=rs.getString(2)%></h3> <!-- name -->
-					<p><%=rs.getString(3)%></p><!-- resverve -->
-					<p><%=rs.getString(6)%></p><!-- time remaining -->
+					<form method="post" action="placeBid.jsp">
+						<h3><%=rs.getString(2)%></h3>
+						<!-- name -->
+						<p><%=rs.getString(3)%></p>
+						<!-- reserve -->
+						<p><%=rs.getString(6) %></p>
+						<!-- time remaining -->
+						
+						<input type="submit" value="Bid now" name="<%=rs.getString(2)%>">
+					</form>
 				</div>
 			</div>
 			<%
